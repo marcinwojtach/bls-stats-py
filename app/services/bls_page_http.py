@@ -9,6 +9,7 @@ class BlsPageHttp:
             stream=False
         )
 
+    @staticmethod
     def get_profile_career(user_id: int):
         return requests.get(
             'https://blssiatkowka.ligspace.pl/index.php?mod=Players&ac=Records&lp_id=' + str(user_id),
