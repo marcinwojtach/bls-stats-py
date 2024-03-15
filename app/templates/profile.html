@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block title %}{{ player.full_name }}{% endblock %}
+{% block content %}
+    <article>
+        <header>
+            <h4 class="profile-lead-title">{{ player.full_name }} <small>({{ player.position }})</small></h4>
+        </header>
+
+        <div class="columns m-is-2">
+            <div class="column">
+                <h6 class="column-title">Statystyki z obecnego sezonu</h6>
+                {% with details=season_details %}
+                    {% include "partials/details_list.html" %}
+                {% endwith %}
+            </div>
+
+            <div class="column">
+                <h6 class="column-title">Kariera / Rekordy</h6>
+                {% with details=career_details %}
+                    {% include "partials/details_list.html" %}
+                {% endwith %}
+            </div>
+        </div>
+    </article>
+{% endblock %}

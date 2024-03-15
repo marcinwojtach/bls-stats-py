@@ -1,0 +1,78 @@
+{
+  "srv": {
+    "id": 1,
+    "label": "Pkt. z zagrywki"
+  },
+  "att": {
+    "id": 2,
+    "label": "Pkt. z ataku"
+  },
+  "blk": {
+    "id": 3,
+    "label": "Pkt. blok"
+  },
+  "pts": {
+    "id": 4,
+    "label": "Punkty"
+  },
+  "pps": {
+    "id": 5,
+    "label": "Punkty/set"
+  },
+  "asum": {
+    "id": 6,
+    "label": "Ataki"
+  },
+  "apct": {
+    "id": 7,
+    "label": "Atak %"
+  },
+  "dig": {
+    "id": 8,
+    "label": "Przyjecia dobre"
+  },
+  "dsum": {
+    "id": 9,
+    "label": "Wykonane przyjecia"
+  },
+  "dpct": {
+    "id": 10,
+    "label": "Przyjęcia %"
+  },
+  "sett": {
+    "id": 11,
+    "label": "Rozegrania dobre"
+  },
+  "rec": {
+    "id": 12,
+    "label": "Obrona ataków"
+  },
+  "playe": {
+    "id": 13,
+    "label": "Sety"
+  },
+  "bps": {
+    "id": 14,
+    "label": "Blok/set"
+  },
+  "sps": {
+    "id": 15,
+    "label": "Pkt. zagrywką/set"
+  },
+  "seps": {
+    "id": 16,
+    "label": "Rozegrania na pojedynczy blok lub bezblok/set"
+  },
+  "rps": {
+    "id": 17,
+    "label": "Obrony ataku/set"
+  },
+  "setf": {
+    "id": 18,
+    "label": "Zepsute zagrywki"
+  },
+  "sfps": {
+    "id": 19,
+    "label": "Zepsute zagrywki/set"
+  }
+}

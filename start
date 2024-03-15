@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -o errexit
+set -o pipefail
+set -o nounset
+
+.venv/bin/python3 -m flask run --port 8001 --host 0.0.0.0 --debug
+#flask run  --port 8001 --host 0.0.0.0 --debug

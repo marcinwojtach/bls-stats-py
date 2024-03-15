@@ -1,0 +1,8 @@
+<dl class="details-list">
+    {% for detail in details %}
+        <div class="details-list-item">
+            <dt>{{ detail.label }}</dt>
+            <dd>{{ detail.value }}</dd>
+        </div>
+    {% endfor %}
+</dl>

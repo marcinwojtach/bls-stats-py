@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+{% block content %}
+    <button hx-get="/clicked" hx-swap="innerHTML" hx-target="#response">
+        Click Me
+    </button>
+
+    <p>tutaj wjedzie resp</p>
+    <div id="response"></div>
+{% endblock %}
