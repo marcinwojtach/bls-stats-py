@@ -17,7 +17,7 @@ def index():
 @app.route('/profile', defaults={ 'profile_id': -1 })
 @app.route('/profile/<profile_id>')
 def profile_user_stats(profile_id: int):
-    if profile_id is -1:
+    if profile_id == -1:
         return 'Handle default profile_id : )'
 
     profile_information_response = BlsPageHttp.get_profile_information(profile_id)
