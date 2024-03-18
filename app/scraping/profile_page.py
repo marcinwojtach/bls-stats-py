@@ -43,7 +43,7 @@ class ProfilePage:
             # TODO: can't access by index, wonder why..
             stat_tds = tr.find_all('td', limit=2)
             for index, stat in enumerate(stat_tds, start=0):
-                if index is 1:
+                if index == 1:
                     stats.append(float(stat.text.replace(',', '.')))
 
         return stats
