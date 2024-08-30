@@ -4,4 +4,4 @@ from flask import Flask
 app = Flask(__name__)
 
 
-from . import handlers, shared
+from . import routes, shared

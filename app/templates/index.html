@@ -1,9 +1,24 @@
 {% extends "layout.html" %}
 {% block content %}
-    <button hx-get="/clicked" hx-swap="innerHTML" hx-target="#response">
-        Click Me
-    </button>
+    <section class="mb-2">
+        <h2>Witaj na stronie BLS Stats!</h2>
+        <p>
+            Obecnie wspieramy tylko jedną drużynę, mamy jednak nadzieję, iż zmieni się to w przyszłości :)
+        </p>
+    </section>
 
-    <p>tutaj wjedzie resp</p>
-    <div id="response"></div>
+    <article>
+        <header>
+            <h4>{{ data.team_name }}</h4>
+            <p class="m-0"><mark>{{ data.season }}</mark></p>
+        </header>
+
+        <ul class="highlighted-list">
+            {% for player in data.players %}
+                <li>
+                    <a href="/profile/{{ player.id }}" class="contrast">{{ player.name }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </article>
 {% endblock %}

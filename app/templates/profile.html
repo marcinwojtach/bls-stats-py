@@ -1,25 +1,64 @@
 {% extends "layout.html" %}
-{% block title %}{{ player.full_name }}{% endblock %}
+{% block title %}{{ data.player.full_name }}{% endblock %}
 {% block content %}
-    <article>
-        <header>
-            <h4 class="profile-lead-title">{{ player.full_name }} <small>({{ player.position }})</small></h4>
-        </header>
+    {% if data.player %}
+        <article>
+            <header>
+                <h4 class="profile-lead-title">{{ data.player.full_name }} <small>({{ data.player.position }})</small></h4>
+                <kbd
+                  class="flying-badge"
+                  for-dialog="highest-scores-dialog"
+                  hx-get="/hx/profile/{{ data.player.id }}/scores/highest"
+                  hx-swap="innerHTML"
+                  hx-target="#highest-scores-dialog-body"
+                >Rekordy</kbd>
+            </header>
 
-        <div class="columns m-is-2">
-            <div class="column">
-                <h6 class="column-title">Statystyki z obecnego sezonu</h6>
-                {% with details=season_details %}
-                    {% include "partials/details_list.html" %}
-                {% endwith %}
-            </div>
+            <div class="profile-statistics">
+                <section>
+                    <h6 class="mb-1">Ostatnie mecze zawodnika</h6>
 
-            <div class="column">
-                <h6 class="column-title">Kariera / Rekordy</h6>
-                {% with details=career_details %}
-                    {% include "partials/details_list.html" %}
-                {% endwith %}
+                    {% for stats in data.latest_stats %}
+                        <details>
+                            <summary>{{ stats.title }} <br> <small>{{ stats.date }}</small></summary>
+                            {% with details=stats.details %}
+                                {% include "partials/details_list.html" %}
+                            {% endwith %}
+                        </details>
+                    {% endfor %}
+                </section>
+
+                <hr>
+
+                <section>
+                    <h6 class="mb-1">Statystyki z sezonów</h6>
+
+                    {% for stats in data.all_seasons_stats %}
+                        <details>
+                            <summary>{{ stats.title }} <br> <small>Rozegrane mecze: {{ stats.played }}</small></summary>
+                            {% with details=stats.details %}
+                                {% include "partials/details_list.html" %}
+                            {% endwith %}
+                        </details>
+                    {% endfor %}
+                </section>
             </div>
-        </div>
-    </article>
+        </article>
+    {% else %}
+        <article>
+            <p>Coś poszło nie tak</p>
+            <p><a href="/">Wróć na stronę główną</a></p>
+        </article>
+    {% endif %}
+
+    <dialog id="highest-scores-dialog">
+        <article>
+            <kbd class="flying-badge inside" for-dialog="highest-scores-dialog">&nbsp;&Cross;&nbsp;</kbd>
+            <header>
+                <h4>Kariera / Rekordy</h4>
+            </header>
+
+            <div id="highest-scores-dialog-body"></div>
+        </article>
+    </dialog>
 {% endblock %}

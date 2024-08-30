@@ -8,11 +8,11 @@ class Headers:
     def all(self):
         return self.columns
 
-    def labels(self) -> list[str]:
+    def labels(self):
         labels = []
         for value in self.columns.values():
             labels.append(value['label'])
         return labels
 
-    def keys(self) -> list[str]:
+    def keys(self):
         return self.columns.keys()
