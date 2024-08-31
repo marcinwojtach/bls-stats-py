@@ -1,30 +1,39 @@
 <!doctype html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     {% block head %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='vendors/pico.indigo.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <title>{% block title %}X-CODE{% endblock %} - BLS Stats</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='vendors/pico.indigo.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <title>{% block title %}X-CODE{% endblock %} - BLS Stats</title>
     {% endblock %}
 </head>
 <body>
-    <header class="container">
-        <nav>
-            <hgroup>
-                <h1><a href="/" class="link">BLS Stats</a></h1>
-                <p>Przeglądaj statystyki</p>
-            </hgroup>
-        </nav>
-    </header>
+<header class="container">
+    <nav>
+        <hgroup>
+            <h1><a href="/" class="link">BLS Stats</a></h1>
+            <p>Przeglądaj statystyki</p>
+        </hgroup>
+        <div class="flying-badge inside">
+            <kbd data-theme-switcher></kbd>
+        </div>
+    </nav>
+</header>
 
-    <main class="container">{% block content %}{% endblock %}</main>
+<main class="container">{% block content %}{% endblock %}</main>
 
-    <footer>
-        {% block footer %}{% endblock %}
-    </footer>
+<footer class="container">
+    {% block footer %}{% endblock %}
 
-    <script src="{{ url_for('static', filename='vendors/htmx.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='app.js') }}"></script>
+    <p class="m-0">
+        <span>Autor: <a href="mailto:marcin.vojtach@gmail.com">Marcin Wojtach</a></span>
+        &#xb7;
+        <a href="https://github.com/marcinwojtach/bls-stats-py" target="_blank">github</a>
+    </p>
+</footer>
+
+<script src="{{ url_for('static', filename='vendors/htmx.min.js') }}"></script>
+<script src="{{ url_for('static', filename='app.js') }}"></script>
 </body>
 </html>

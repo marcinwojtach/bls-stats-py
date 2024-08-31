@@ -1,0 +1,12 @@
+<ul class="highlighted-list">
+    {% for team in data %}
+        <li>
+            <u
+              for-dialog="team-dialog"
+              hx-get="/hx/team/{{ team.id }}/modal-body"
+              hx-swap="innerHTML"
+              hx-target="#team-dialog-body"
+            >{{ team.name }}</u>
+        </li>
+    {% endfor %}
+</ul>

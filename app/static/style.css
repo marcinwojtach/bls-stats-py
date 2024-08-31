@@ -1,5 +1,16 @@
 body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   background-color: var(--pico-background-color);
+}
+
+footer {
+  margin-top: auto;
+}
+
+body.dialog-open {
+  overflow: hidden;
 }
 
 article {
@@ -32,27 +43,12 @@ article {
   }
 }
 
-.columns {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+.columns .column {
+  margin-bottom: 24px;
+}
 
-  .column {
-    margin-bottom: 48px;
-  }
-
-  @media all and (min-width: 964px) {
-    &.m-is-2 {
-      justify-content: space-between;
-      flex-direction: row;
-      gap: 24px;
-
-      .column {
-        width: 50%;
-      }
-    }
-  }
+.columns .column:last-of-type {
+  margin-bottom: 0;
 }
 
 .column-title {
@@ -71,6 +67,14 @@ article {
   margin-bottom: 32px;
 }
 
+.mb-3 {
+  margin-bottom: 48px;
+}
+
+.mt-1 {
+  margin-top: 16px;
+}
+
 small {
   font-weight: lighter;
 }
@@ -84,6 +88,14 @@ small {
   padding: 6px 0;
 }
 
+.highlighted-list.small li {
+  padding: 2px 0;
+}
+
+.highlighted-list li u {
+  cursor: pointer;
+}
+
 details summary + *:first-of-type {
   margin-bottom: 32px;
 }
@@ -92,9 +104,13 @@ header {
   position: relative;
 }
 
+.relative-wrapper {
+  position: relative;
+}
+
 .flying-badge {
   position: absolute;
-  top: -16px;
+  top: -24px;
   right: 8px;
   z-index: 100;
 }
@@ -105,10 +121,43 @@ header {
 }
 
 dialog article {
-  position: relative;
+  min-width: 300px;
+  margin: 0;
 }
 
-/*dialog > kbd {*/
-/*  font-size: 18px;*/
-/*  color: #fff;*/
-/*}*/
+[data-theme-switcher] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+[aria-busy] {
+  font-size: 26px;
+  height: 26px;
+}
+
+button[type="submit"] {
+  padding: 0.2rem;
+}
+
+[for-dialog] {
+  cursor: pointer;
+}
+
+@media all and (min-width: 1024px) {
+  .columns {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    gap: 24px;
+  }
+
+  .columns .column {
+    width: 50%;
+    margin: 0;
+  }
+}

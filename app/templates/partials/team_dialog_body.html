@@ -1,0 +1,16 @@
+<article>
+    <header>
+        <h4 class="mb-1">{{ data.team_name }}</h4>
+        <p class="m-0">
+            <mark>{{ data.season }}</mark>
+        </p>
+    </header>
+
+    <ul class="highlighted-list small">
+        {% for player in data.players %}
+            <li>
+                <a href="/profile/{{ player.id }}" class="contrast">{{ player.name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</article>

@@ -1,24 +1,44 @@
 {% extends "layout.html" %}
 {% block content %}
-    <section class="mb-2">
-        <h2>Witaj na stronie BLS Stats!</h2>
-        <p>
-            Obecnie wspieramy tylko jedną drużynę, mamy jednak nadzieję, iż zmieni się to w przyszłości :)
-        </p>
-    </section>
-
-    <article>
-        <header>
-            <h4>{{ data.team_name }}</h4>
-            <p class="m-0"><mark>{{ data.season }}</mark></p>
+    <div>
+        <header class="mb-3">
+            <h1>Witaj na stronie BLS Stats</h1>
+            <p>Wybierz drużynę oraz zawodnika aby przeglądać jego/jej statystyki.</p>
+            <p>Więcej informacji o tym, dlaczego powstała ta strona znajdziesz <a href="/about">tutaj</a>.</p>
         </header>
 
-        <ul class="highlighted-list">
-            {% for player in data.players %}
-                <li>
-                    <a href="/profile/{{ player.id }}" class="contrast">{{ player.name }}</a>
-                </li>
-            {% endfor %}
-        </ul>
-    </article>
+        <div class="columns">
+            <article class="column">
+                <header>
+                    <h4 class="m-0">I Liga</h4>
+                </header>
+
+                {% with data=data.league_teams_1 %}
+                    {% include "partials/team_list_for_league.html" %}
+                {% endwith %}
+            </article>
+
+            <article class="column">
+                <header>
+                    <h4 class="m-0">II Liga</h4>
+                </header>
+
+                {% with data=data.league_teams_2 %}
+                    {% include "partials/team_list_for_league.html" %}
+                {% endwith %}
+            </article>
+        </div>
+    </div>
+
+    <dialog id="team-dialog">
+        <kbd
+          class="flying-badge inside"
+          for-dialog="team-dialog"
+          with-reset="#team-dialog-body"
+          with-reset-content='<p aria-busy="true"></p>'
+        >&nbsp;&Cross;&nbsp;</kbd>
+        <div id="team-dialog-body">
+            <p aria-busy="true"></p>
+        </div>
+    </dialog>
 {% endblock %}

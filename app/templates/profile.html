@@ -11,7 +11,7 @@
                   hx-get="/hx/profile/{{ data.player.id }}/scores/highest"
                   hx-swap="innerHTML"
                   hx-target="#highest-scores-dialog-body"
-                >Rekordy</kbd>
+                >Wyświetl Rekordy</kbd>
             </header>
 
             <div class="profile-statistics">
@@ -53,12 +53,20 @@
 
     <dialog id="highest-scores-dialog">
         <article>
-            <kbd class="flying-badge inside" for-dialog="highest-scores-dialog">&nbsp;&Cross;&nbsp;</kbd>
+            <kbd
+              class="flying-badge inside"
+              for-dialog="highest-scores-dialog"
+            >&nbsp;&Cross;&nbsp;</kbd>
+
             <header>
                 <h4>Kariera / Rekordy</h4>
             </header>
 
-            <div id="highest-scores-dialog-body"></div>
+            {% include "partials/score_chart_form.html" %}
+
+            <div id="highest-scores-dialog-body">
+                <p aria-busy="true"></p>
+            </div>
         </article>
     </dialog>
 {% endblock %}

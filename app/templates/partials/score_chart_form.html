@@ -1,0 +1,20 @@
+<details>
+    <summary>Filtruj wyniki</summary>
+
+    <form
+      hx-get="/hx/profile/{{ data.player.id }}/scores/highest"
+      hx-swap="innerHTML"
+      hx-target="#highest-scores-dialog-body"
+      class="m-0"
+    >
+        {% for option in data.form_options %}
+            <label for="{{ option }}">
+                <input id="{{ option }}" type="checkbox" name="{{ option }}"/>{{ option }}
+            </label>
+        {% endfor %}
+
+        <button type="submit" class="mt-1">Filtruj</button>
+
+        <progress id="progress-2" class="htmx-indicator"></progress>
+    </form>
+</details>
